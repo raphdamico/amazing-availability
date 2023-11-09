@@ -1,0 +1,181 @@
+const calendar_raph = [
+    {eventId: 10, title: "Weekly A", day: 0, time: 9, duration: 0.5},
+    {eventId: 10, title: "Weekly B", day: 0, time: 9, duration: 0.5},
+    {eventId: 10, title: "Weekly C", day: 0, time: 9, duration: 0.5},
+    {eventId: 10, title: "Weekly D", day: 0, time: 9, duration: 0.5},
+    {eventId: 10, title: "Weekly E", day: 0, time: 9, duration: 0.5},
+    {eventId: 20, title: "Sprint Planning", day: 0, time: 9.5, duration: 0.5},
+    {eventId: 30, title: "❇️ You/Dan", day: 0, time: 10.5, duration: 0.5, rescheduleTime: {day: 0, time: 10}},
+    {eventId: 40, title: "Marketing meeting", day: 0, time: 11, duration: 1},
+    {eventId: 50, title: "Team lunch", day: 0, time: 12, duration: 1},
+    {eventId: 60, title: "Focus Time", day: 0, time: 13, duration: 2},
+    {eventId: 70, title: "Sync up", day: 0, time: 15, duration: 0.5},
+    {eventId: 80, title: "Get hot chocolate", day: 0, time: 15.5, duration: 0.5},
+  
+    {eventId: 90, title: "Workshop", day: 1, time: 9, duration: 1},
+    {eventId: 100, title: "[Interview] Rob Kappa]", day: 1, time: 10, duration: 1},
+    {eventId: 110, title: "You/Linda", day: 1, time: 11, duration: 0.5, rescheduleTime: {day: 2, time: 9}},
+    {eventId: 120, title: "You/Amy", day: 1, time: 11, duration: 0.5, offset: 0.2, rescheduleTime: {day: 4, time: 14}},
+    {eventId: 130, title: "You/Vicky", day: 1, time: 11.5, duration: 0.5},
+    {eventId: 140, title: "Lunch", day: 1, time: 12, duration: 0.5},
+    {eventId: 150, title: "Critique", day: 1, time: 12.5, duration: 1.5},
+    {eventId: 160, title: "Urgent!!", day: 1, time: 13, duration: 0.5, offset: 0.25},
+    {eventId: 170, title: "Busy (via Clockwise)", day: 1, time: 14, duration: 1},
+    {eventId: 180, title: "Work on presentation", day: 1, time: 15, duration: 2},
+    
+    {eventId: 190, title: "❇️ Quick Chat", day: 2, time: 9.5, duration: 0.5, rescheduleTime: {day: 2, time: 10}},
+    {eventId: 200, title: "❇️ You/Jimmy", day: 2, time: 10.5, duration: 0.75, rescheduleTime: {day: 4, time: 11}},
+    {eventId: 210, title: "You/Dan", day: 2, time: 11.25, duration: 0.5, rescheduleTime: {day: 2, time: 11.5}},
+    {eventId: 220, title: "Career 1:1", day: 2, time: 12, duration: 1},
+    {eventId: 230, title: "Lunch", day: 2, time: 12.5, duration: 0.5, offset: 0.25},
+    {eventId: 240, title: "You/Cecily", day: 2, time: 13, duration: 0.5},
+    {eventId: 250, title: "Busy (via Clockwise)", day: 2, time: 13.5, duration: 0.5},
+    {eventId: 260, title: "Sync meeting", day: 2, time: 15, duration: 1},
+    {eventId: 270, title: "UserTesting", day: 2, time: 16, duration: 1},
+  
+    {eventId: 280, title: "Sprint Sync", day: 3, time: 9, duration: 0.5},
+    {eventId: 290, title: "[INTERVIEW] Rob Kappa", day: 3, time: 9.5, duration: 1},
+    {eventId: 300, title: "Standup", day: 3, time: 10.5, duration: 0.5},
+    {eventId: 310, title: "❇️ Nikita/You", day: 3, time: 11, duration: 0.5, rescheduleTime: {day: 3, time: 12.5}}, 
+    {eventId: 320, title: "Coordinate", day: 3, time: 11.5, duration: 0.5},
+    {eventId: 330, title: "❇️ You/Jon", day: 3, time: 12, duration: 0.5},
+    {eventId: 340, title: "Lunch", day: 3, time: 12.5, duration: 0.5},
+    {eventId: 350, title: "UserTesting", day: 3, time: 13, duration: 1},
+    {eventId: 360, title: "Matt/You", day: 3, time: 13.5, duration: 0.5, offset: 0.25},
+    {eventId: 370, title: "Focus Time", day: 3, time: 14, duration: 3},
+  
+    {eventId: 380, title: "You/Cecily/Linda", day: 4, time: 9.75, duration: 0.75},
+    {eventId: 390, title: "Sprint Retro", day: 4, time: 10.5, duration: 0.5},
+    {eventId: 400, title: "Lunch", day: 4, time: 11.5, duration: 0.5},
+    {eventId: 410, title: "Demos", day: 4, time: 12, duration: 1},
+    {eventId: 420, title: "Focus Time", day: 4, time: 13, duration: 1},
+    {eventId: 430, title: "Matt/Cecily", day: 4, time: 13.5, duration: 0.5},
+    {eventId: 440, title: "Focus Time", day: 4, time: 14.5, duration: 1.5},
+    {eventId: 450, title: "ASDASDAS", day: 4, time: 16, duration: 0.5}
+]
+
+const calendar_linda = [
+    {eventId: 10, title: "Weekly Kickoff", day: 0, time: 9, duration: 0.5},
+    {eventId: 20, title: "Sprint Planning", day: 0, time: 9.5, duration: 0.5},
+    {eventId: 30, title: "❇️ You/Dan", day: 0, time: 12.5, duration: 4.5, rescheduleTime: {day: 0, time: 10}},
+    {eventId: 60, title: "Focus Time 2", day: 0, time: 13, duration: 2},
+    {eventId: 70, title: "Sync up", day: 0, time: 14, duration: 0.5},
+    {eventId: 80, title: "Choc 1a", day: 0, time: 15.25, duration: 0.5},
+    {eventId: 85, title: "Choc 1b", day: 0, time: 15.25, duration: 0.5},
+    {eventId: 90, title: "Choc 2", day: 0, time: 15.75, duration: 0.5},
+    {eventId: 95, title: "Choc 3", day: 0, time: 16, duration: 0.5},
+    {eventId: 100, title: "Choc 4", day: 0, time: 16.25, duration: 0.5},
+  
+    {eventId: 90, title: "Workshop", day: 1, time: 9, duration: 1},
+    {eventId: 100, title: "[Interview] Rob Kappa]", day: 1, time: 10, duration: 1},
+    {eventId: 110, title: "You/Linda", day: 1, time: 11, duration: 0.5, rescheduleTime: {day: 2, time: 9}},
+    {eventId: 120, title: "You/Amy", day: 1, time: 11, duration: 0.5, offset: 0.5, rescheduleTime: {day: 4, time: 14}},
+    {eventId: 130, title: "You/Vicky", day: 1, time: 11.5, duration: 0.5},
+    {eventId: 140, title: "Lunch", day: 1, time: 12, duration: 0.5},
+    {eventId: 150, title: "Critique", day: 1, time: 12.5, duration: 1.5},
+    {eventId: 160, title: "Urgent!!", day: 1, time: 13, duration: 0.5, offset: 0.25},
+    {eventId: 170, title: "Busy (via Clockwise)", day: 1, time: 14, duration: 1},
+    {eventId: 180, title: "Work on presentation", day: 1, time: 15, duration: 2},
+    
+    {eventId: 190, title: "❇️ Quick Chat", day: 2, time: 9.5, duration: 0.5, rescheduleTime: {day: 2, time: 10}},
+    {eventId: 200, title: "❇️ You/Jimmy", day: 2, time: 10.5, duration: 0.75, rescheduleTime: {day: 4, time: 11}},
+    {eventId: 210, title: "You/Dan", day: 2, time: 11.25, duration: 0.5, rescheduleTime: {day: 2, time: 11.5}},
+    {eventId: 220, title: "Career 1:1", day: 2, time: 12, duration: 1},
+    {eventId: 230, title: "Lunch", day: 2, time: 12.5, duration: 0.5, offset: 0.25},
+    {eventId: 240, title: "You/Cecily", day: 2, time: 13, duration: 0.5},
+    {eventId: 250, title: "Busy (via Clockwise)", day: 2, time: 13.5, duration: 0.5},
+    {eventId: 260, title: "Sync meeting", day: 2, time: 15, duration: 1},
+    {eventId: 270, title: "UserTesting", day: 2, time: 16, duration: 1},
+  
+    {eventId: 280, title: "Sprint Sync", day: 3, time: 9, duration: 0.5},
+    {eventId: 290, title: "[INTERVIEW] Rob Kappa", day: 3, time: 9.5, duration: 1},
+    {eventId: 300, title: "Standup", day: 3, time: 10.5, duration: 0.5},
+    {eventId: 310, title: "❇️ Nikita/You", day: 3, time: 11, duration: 0.5, rescheduleTime: {day: 3, time: 12.5}}, 
+    {eventId: 320, title: "Coordinate", day: 3, time: 11.5, duration: 0.5},
+    {eventId: 330, title: "❇️ You/Jon", day: 3, time: 12, duration: 0.5},
+    {eventId: 340, title: "Lunch", day: 3, time: 12.5, duration: 0.5},
+    {eventId: 350, title: "UserTesting", day: 3, time: 13, duration: 1},
+    {eventId: 360, title: "Matt/You", day: 3, time: 13.5, duration: 0.5, offset: 0.25},
+    {eventId: 370, title: "Focus Time", day: 3, time: 14, duration: 3},
+  
+    {eventId: 380, title: "You/Cecily/Linda", day: 4, time: 9.75, duration: 0.75},
+    {eventId: 390, title: "Sprint Retro", day: 4, time: 10.5, duration: 0.5},
+    {eventId: 400, title: "Lunch", day: 4, time: 11.5, duration: 0.5},
+    {eventId: 410, title: "Demos", day: 4, time: 12, duration: 1},
+    {eventId: 420, title: "Focus Time", day: 4, time: 13, duration: 1},
+    {eventId: 430, title: "Matt/Cecily", day: 4, time: 13.5, duration: 0.5},
+    {eventId: 440, title: "Focus Time", day: 4, time: 14.5, duration: 1.5},
+    {eventId: 450, title: "Wind down & wrap up", day: 4, time: 15.5, duration: 0.5}
+]
+
+const calendar_jeff = [
+    {eventId: 10, title: "Weekly Kickoff", day: 0, time: 9, duration: 0.5},
+    {eventId: 20, title: "Sprint Planning", day: 0, time: 9.5, duration: 0.5},
+    {eventId: 30, title: "❇️ You/Dan", day: 0, time: 12.5, duration: 4.5, rescheduleTime: {day: 0, time: 10}},
+    // {eventId: 40, title: "Marketing meeting", day: 0, time: 11, duration: 1},
+    // {eventId: 50, title: "Team lunch", day: 0, time: 12, duration: 1},
+    {eventId: 60, title: "Focus Time", day: 0, time: 13, duration: 2},
+    {eventId: 70, title: "Sync up", day: 0, time: 14, duration: 0.5},
+    {eventId: 80, title: "Choc 1", day: 0, time: 15.25, duration: 0.5},
+    {eventId: 80, title: "Choc 2", day: 0, time: 15.75, duration: 0.5},
+    {eventId: 80, title: "Choc 3", day: 0, time: 16, duration: 0.5},
+    {eventId: 80, title: "Choc 4", day: 0, time: 16.25, duration: 0.5},
+  
+    {eventId: 90, title: "Workshop", day: 1, time: 9, duration: 1},
+    {eventId: 100, title: "[Interview] Rob Kappa]", day: 1, time: 10, duration: 1},
+    {eventId: 110, title: "You/Linda", day: 1, time: 11, duration: 0.5, rescheduleTime: {day: 2, time: 9}},
+    {eventId: 120, title: "You/Amy", day: 1, time: 11, duration: 0.5, offset: 0.5, rescheduleTime: {day: 4, time: 14}},
+    {eventId: 130, title: "You/Vicky", day: 1, time: 11.5, duration: 0.5},
+    {eventId: 140, title: "Lunch", day: 1, time: 12, duration: 0.5},
+    {eventId: 150, title: "Critique", day: 1, time: 12.5, duration: 1.5},
+    {eventId: 160, title: "Urgent!!", day: 1, time: 13, duration: 0.5, offset: 0.25},
+    {eventId: 170, title: "Busy (via Clockwise)", day: 1, time: 14, duration: 1},
+    {eventId: 180, title: "Work on presentation", day: 1, time: 15, duration: 2},
+    
+    {eventId: 190, title: "❇️ Quick Chat", day: 2, time: 9.5, duration: 0.5, rescheduleTime: {day: 2, time: 10}},
+    {eventId: 200, title: "❇️ You/Jimmy", day: 2, time: 10.5, duration: 0.75, rescheduleTime: {day: 4, time: 11}},
+    {eventId: 210, title: "You/Dan", day: 2, time: 11.25, duration: 0.5, rescheduleTime: {day: 2, time: 11.5}},
+    {eventId: 220, title: "Career 1:1", day: 2, time: 12, duration: 1},
+    {eventId: 230, title: "Lunch", day: 2, time: 12.5, duration: 0.5, offset: 0.25},
+    {eventId: 240, title: "You/Cecily", day: 2, time: 13, duration: 0.5},
+    {eventId: 250, title: "Busy (via Clockwise)", day: 2, time: 13.5, duration: 0.5},
+    {eventId: 260, title: "Sync meeting", day: 2, time: 15, duration: 1},
+    {eventId: 270, title: "UserTesting", day: 2, time: 16, duration: 1},
+  
+    {eventId: 280, title: "Sprint Sync", day: 3, time: 9, duration: 0.5},
+    {eventId: 290, title: "[INTERVIEW] Rob Kappa", day: 3, time: 9.5, duration: 1},
+    {eventId: 300, title: "Standup", day: 3, time: 10.5, duration: 0.5},
+    {eventId: 310, title: "❇️ Nikita/You", day: 3, time: 11, duration: 0.5, rescheduleTime: {day: 3, time: 12.5}}, 
+    {eventId: 320, title: "Coordinate", day: 3, time: 11.5, duration: 0.5},
+    {eventId: 330, title: "❇️ You/Jon", day: 3, time: 12, duration: 0.5},
+    {eventId: 340, title: "Lunch", day: 3, time: 12.5, duration: 0.5},
+    {eventId: 350, title: "UserTesting", day: 3, time: 13, duration: 1},
+    {eventId: 360, title: "Matt/You", day: 3, time: 13.5, duration: 0.5, offset: 0.25},
+    {eventId: 370, title: "Focus Time", day: 3, time: 14, duration: 3},
+  
+    {eventId: 380, title: "You/Cecily/Linda", day: 4, time: 9.75, duration: 0.75},
+    {eventId: 390, title: "Sprint Retro", day: 4, time: 10.5, duration: 0.5},
+    {eventId: 400, title: "Lunch", day: 4, time: 11.5, duration: 0.5},
+    {eventId: 410, title: "Demos", day: 4, time: 12, duration: 1},
+    {eventId: 420, title: "Focus Time", day: 4, time: 13, duration: 1},
+    {eventId: 430, title: "Matt/Cecily", day: 4, time: 13.5, duration: 0.5},
+    {eventId: 440, title: "Focus Time", day: 4, time: 14.5, duration: 1.5},
+    {eventId: 450, title: "TEST", day: 4, time: 16, duration: 0.5}
+]
+
+function processEvents(events, calendarId) {
+    return events.map(event => {
+        const startTime = (24 * event.day) + event.time;
+        const endTime = startTime + event.duration;
+        return {...event, startTime, endTime, calendarId};
+    })
+}
+
+export const calendars = [
+    ...processEvents(calendar_raph, "raph"),
+    ...processEvents(calendar_linda, "linda"),
+    ...processEvents(calendar_raph, "jeff"),
+    ...processEvents(calendar_linda, "dan"), 
+    // ...processEvents(calendar_linda, "vicky"), 
+    // ...processEvents(calendar_linda, "matt")
+]

@@ -1,0 +1,46 @@
+:root {
+    --ev-bg: #E1EFEA;
+    --ev-bg-conflict: #ffcbcb;
+    --ev-bg-highlight: #FFFCE0;
+    --ev-border: #C6D2CE;
+    --ev-rail: #027A52;
+    --ev-fg: #027A52;
+    --ev-fg-conflict: #7a0202;
+    --ev-fg-highlight: #B95600;
+
+    --cal-user-base: #444CE7;	
+    --cal-user-bg: #C7D7FE;
+    --cal-user-fg: #3538CD;
+    --cal-muted-base: #C3C3C3;	
+    --cal-muted-bg: #F7F7F7;
+    --cal-muted-fg: #BCBCBC;
+    --cal-0-base: #d81b60;	
+    --cal-0-bg: #f2b6cc;
+    --cal-0-fg: #8b113e;
+    --cal-1-base: #ef6c00;	
+    --cal-1-bg: #f7ba87;
+    --cal-1-fg: #743500;
+    --cal-2-base: #9e69af;	
+    --cal-2-bg: #d6bfdd;
+    --cal-2-fg: #5a3b63;
+    --cal-3-base: #e4c441;	
+    --cal-3-bg: #e4c543;
+    --cal-3-fg: #524617;
+    --cal-4-base: #4285f4;	
+    --cal-4-bg: #aac8fa;
+    --cal-4-fg: #234680;
+    --cal-5-base: #c0ca33;	
+    --cal-5-bg: #c5ce44;
+    --cal-5-fg: #464a13;
+    --cal-6-base: #b39ddb;	
+    --cal-6-bg: #cec0e8;
+    --cal-6-fg: #4c425d;
+    --cal-7-base: #f09300;	
+    --cal-7-bg: #f6bd62;
+    --cal-7-fg: #653e00;
+    --cal-8-base: #795548;	
+    --cal-8-bg: #d0c4bf;
+    --cal-8-fg: #5c4037;
+}
+
+
