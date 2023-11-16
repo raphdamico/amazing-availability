@@ -10,12 +10,13 @@ export function calcEventPositions(events) {
     
     // Everything breaks if the list isn't sorted!
     events = events.sort((a, b) => a.startTime - b.startTime);
+    let nonLayoutEvents = events.filter(ev => ev.title === '<OWH>' || ev.title === '<JOWH>');
+    events = events.filter(ev => ev.title != '<OWH>' && ev.title != '<JOWH>');
 
     let calculation_count = 0;
 
     // Clusters are groups of events that overlap
-    let currentCluster = 0;
-    let clusterMaxDepth = 0;
+    let currentClusterIndex = 0;
     let clustersDepth = [0];
     let overlapsInThisCluster = 0;
     let lastClusterStart = 0;
@@ -66,7 +67,7 @@ export function calcEventPositions(events) {
             if (doesOverlap(events[j], events[i])) {
                 if (events[i].depth === events[j].depth) {
                     events[i].depth = events[j].depth + 1;
-                    console.log("👈 to the left of", events[j].title, "new depth", events[i].depth)
+                    // console.log("👈 to the left of", events[j].title, "new depth", events[i].depth)
                 }
             }            
             calculation_count++;
@@ -80,34 +81,36 @@ export function calcEventPositions(events) {
 
         // Split a new cluster if there are no overlaps
         if (overlapsInThisCluster === 0) {
-            currentCluster++;
-            clustersDepth[currentCluster] = 0;
+            currentClusterIndex++;
+            clustersDepth[currentClusterIndex] = 0;
             lastClusterStart = i;
         }
         else {
-            if (events[i].depth > clustersDepth[currentCluster]) {
-                clustersDepth[currentCluster] = events[i].depth;
+            if (events[i].depth > clustersDepth[currentClusterIndex]) {
+                clustersDepth[currentClusterIndex] = events[i].depth;
             }
         }
         overlapsInThisCluster = 0;
-        clusterMaxDepth = 0;
-        events[i].cluster = currentCluster;
+        events[i].cluster = currentClusterIndex;
     }
 
-    console.log("Number of overlaps considered: ", calculation_count)
-    console.log("Cluster depth", clustersDepth)
+    // console.log("Number of overlaps considered: ", calculation_count)
+    // console.log("Cluster depth", clustersDepth)
     
     events = events.map((ev, i) => {
         return { ...ev, maxDepth: clustersDepth[ev.cluster] + 1 };
       });
     
     // LOGS
-    console.log("TEST", events)
-    for (const [i, ev] of events.entries()) {
-        console.log(`${ev.cluster} | ${ev.depth} | ${ev.maxDepth} | ${ev.title}` )
-    }
+    // console.log("TEST", events)
+    // for (const [i, ev] of events.entries()) {
+    //     console.log(`${ev.cluster} | ${ev.depth} | ${ev.maxDepth} | ${ev.title}` )
+    // }
 
-    return events;
+    nonLayoutEvents = nonLayoutEvents.map(ev => {
+        return { ...ev, depth: 0, maxDepth: 1, cluster: -1}
+    })
+    return [...events, ...nonLayoutEvents];
 
 }
 

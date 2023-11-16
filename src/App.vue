@@ -7,7 +7,7 @@ import Calendar from './components/Calendar.vue'
   <!-- <header> -->
 
     <div class="wrapper">
-      <Calendar msg="You did it!" height="600" width="800"/>
+      <Calendar msg="You did it!" height="700" width="960"/>
     </div>
   <!-- </header> -->
 

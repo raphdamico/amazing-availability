@@ -9,6 +9,8 @@
     "host": "vite --host"
   },
   "dependencies": {
+    "chroma-js": "^2.4.2",
+    "luxon": "^3.4.4",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

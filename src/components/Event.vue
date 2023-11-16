@@ -1,9 +1,11 @@
 <script setup>
 
+import { isSmartHold, isOutsideWorkingHours } from '../helpers/eventCategorizer.js'
 import { inject, ref, reactive, computed } from 'vue'
 
 const props = defineProps({
   title: String,
+  displayTitle: String,
   x: Number,
   y: Number,
   width: Number,
@@ -23,8 +25,8 @@ const props = defineProps({
 const CONFIG = inject('CONFIG')
 const hover = ref(false)
 
-
-const smartHold = props.title === "Focus Time" || props.title === "Lunch";
+const smartHold = isSmartHold(props) //props.title === "Focus Time" || props.title === "Lunch";
+const outsideWorkingHours = isOutsideWorkingHours(props);
 const baseColor = smartHold ? 'white' : 'var(--ev-bg)';
 
 const conflicted = computed(() => {
@@ -35,28 +37,6 @@ const highlighted = computed(() => {
   return props.highlightedForSuggestion === true && props.scheduling === false
 })
 
-// function getTheme() {
-//   if (conflicted.value) {
-//     return {
-//       color: `var(--ev-fg-conflict)`,
-//       backgroundColor: `var(--ev-bg-conflict)`,
-//       borderColor: `var(--ev-border) var(--ev-border) var(--ev-border) var(--ev-fg-conflict)`
-//     }
-//   }
-//   if (highlighted.value) {
-//     return {
-//       color: `var(--ev-fg-highlight)`,
-//       backgroundColor: `var(--ev-bg-highlight)`,
-//       borderColor: `var(--ev-border) var(--ev-border) var(--ev-border) var(--ev-fg-highlight)`
-//     }
-//   }
-//   return {
-//     color: `var(--ev-fg)`,
-//     backgroundColor: `var(--ev-bg)`,
-//     borderColor: `var(--ev-border) var(--ev-border) var(--ev-border) var(--ev-fg)`
-//   }
-// }
-
 function getTheme(calendarId) {
   const lookup = {
     "raph": "user",
@@ -64,7 +44,8 @@ function getTheme(calendarId) {
     "jeff": "1",
     "dan":"2",
     "vicky":"3",
-    "matt":"4"
+    "matt":"4",
+    "dario":"5",
   }
   const cal = lookup[calendarId];
   const bordersNotRail = "white";
@@ -78,8 +59,8 @@ function getTheme(calendarId) {
 // a computed ref
 const eventStyle = computed(() => {
   return { 
-    left: props.conflictWithCursor && !props.conflictAfterReschedule ? `${props.rescheduleOffset.x}px` : `0px`, 
-    top: props.conflictWithCursor && !props.conflictAfterReschedule ? `${props.rescheduleOffset.y}px` : `0px`, 
+    left: `0px`, 
+    top:  `0px`, 
     height: `${props.height}px`, 
     width: `${props.width}px`,
     backgroundColor: smartHold ? baseColor : getTheme(props.calendarId).backgroundColor,
@@ -114,12 +95,13 @@ function eventClick(msg) {
 <template>
   <div 
     class="event-container"     
+    :class="{'outsideWorkingHours': outsideWorkingHours}"
     @mouseover="hover = true"
     @mouseout="hover = false"
     @click="eventClick(props.title)"
   >
   <div class="event-style" :style="eventStyle" >
-    {{props.title}}
+    {{props.displayTitle}}
   </div>
   <div class="highlight" :style="highlightStyle"></div>
   </div>
@@ -130,10 +112,6 @@ function eventClick(msg) {
     cursor: pointer;
     display: absolute;    
   }
-  /* .event-style:hover {
-    background-color: var(--ev-bg-hover) !important;
-  }
-   */
   .event-style {
     /* pointer-events: none; */
     display: absolute;
@@ -148,27 +126,9 @@ function eventClick(msg) {
     font-size: 0.875em;
     line-height: 0.95em;
   }
-  
-  .highlight {
-    pointer-events: none;
-    border: 3px solid var(--fix-conflict-highlight);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 4px;
+
+  .outsideWorkingHours {
     opacity: 0;
-    transition: 0.4s opacity;
-    z-index: 999;
-    margin: -1px
   }
-  .highlight::after {
-    content: "";
-    background-color: var(--fix-conflict-highlight);
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    border-radius: 10px;
-  }
+  
 </style>
